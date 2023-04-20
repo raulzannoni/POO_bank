@@ -63,9 +63,6 @@ class Titulaire
                 $this->_date_naissance = new DateTime($date_naissance);
                 $this->_ville = $ville;
                 $this->_comptes = [];
-
-                echo "Je suis le titulaire! <br>";
-
             }
         
         //methode pour ajouter un compte à une titulaire 
@@ -73,6 +70,34 @@ class Titulaire
             {
                 array_push($this->_comptes, $new_compte);
             }
+
+        //methode pou calculer l'age de le titulaire
+        public function ageTitulaire()
+            {
+                //Calcul age de la personne
+                $today = new DateTime('now');
+                $interval = $today->diff($this->_date_naissance);
+                return $interval->y;
+            }
+
+        //methode pour afficher les infos du titulaire et le comptes detenus
+        public function infoTitulaire()
+            {
+                echo "<br><br>*******************<br><br>";
+                echo "Nom : ".$this->_nom." ;<br>";
+                echo "Prenom: ".$this->_prenom." ;<br>";
+                echo "Ville: ".$this->_ville." ;<br>";
+                echo "Age : ".$this->ageTitulaire()." ans ;<br>";
+                echo "Comptes detenus : ".count($this->_comptes)." <br>";
+                echo "------------------<br>";
+                foreach($this->_comptes as $key=>$compte)
+                    {
+                        $numero = $key + 1; 
+                        echo "Compte numero $numero : ".$compte->getLibelle()." ;<br>";
+                    }
+                echo "<br>*******************<br><br>";
+            }
+        
 
     }
 
