@@ -68,7 +68,7 @@ class Titulaire
         //methode pour ajouter un compte à une titulaire 
         public function ajoutCompte(Compte $new_compte)
             {
-                array_push($this->_comptes, $new_compte);
+                $this->_comptes[]= $new_compte;
             }
 
         //methode pou calculer l'age de le titulaire
