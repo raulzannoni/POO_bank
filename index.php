@@ -1,4 +1,4 @@
-<h1>POO_Banque</h1>
+<h1>POO_Bank</h1>
 
 <?php
 
